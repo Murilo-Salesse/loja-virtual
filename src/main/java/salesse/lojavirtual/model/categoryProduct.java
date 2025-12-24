@@ -12,17 +12,17 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "brand_product")
-@SequenceGenerator(name = "seq_brand_product", sequenceName = "seq_brand_product", allocationSize = 1, initialValue = 1)
-public class ProductBrand implements Serializable {
-
+@Table(name = "category_product")
+@SequenceGenerator(name = "seq_category_product", sequenceName = "seq_category_product", allocationSize = 1, initialValue = 1)
+public class categoryProduct implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category_product")
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(name = "name_description", nullable = false)
 	private String nameDescription;
 
 	public Long getId() {
@@ -43,9 +43,8 @@ public class ProductBrand implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nameDescription);
+		return Objects.hash(id);
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -55,7 +54,8 @@ public class ProductBrand implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ProductBrand other = (ProductBrand) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nameDescription, other.nameDescription);
+		categoryProduct other = (categoryProduct) obj;
+		return Objects.equals(id, other.id);
 	}
+	
 }
