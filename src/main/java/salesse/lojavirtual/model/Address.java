@@ -3,9 +3,10 @@ package salesse.lojavirtual.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,11 +15,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import salesse.lojavirtual.enums.TypeAddress;
 
 @Entity
 @Table(name = "address")
 @SequenceGenerator(name = "seq_address", sequenceName = "seq_address", allocationSize = 1, initialValue = 1)
-public class address implements Serializable {
+public class Address implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +45,18 @@ public class address implements Serializable {
 	        name = "person_fk"
 	    )
 	)
-	private person person;
+	private Person person;
+	
+	@Enumerated(EnumType.STRING)
+	private TypeAddress typeAddres;
+	
+	public TypeAddress getTypeAddres() {
+		return typeAddres;
+	}
+	
+	public void setTypeAddres(TypeAddress typeAddres) {
+		this.typeAddres = typeAddres;
+	}
 
 	public Long getId() {
 		return id;
@@ -109,11 +122,11 @@ public class address implements Serializable {
 		this.city = city;
 	}
 
-	public person getPerson() {
+	public Person getPerson() {
 		return person;
 	}
 
-	public void setPerson(person person) {
+	public void setPerson(Person person) {
 		this.person = person;
 	}
 
@@ -130,7 +143,7 @@ public class address implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		address other = (address) obj;
+		Address other = (Address) obj;
 		return Objects.equals(id, other.id);
 	}
 }

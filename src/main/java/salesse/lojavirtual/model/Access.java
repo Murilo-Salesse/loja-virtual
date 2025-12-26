@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "access")
 @SequenceGenerator(name = "seq_access", sequenceName = "seq_access", allocationSize = 1, initialValue = 1)
-public class access implements GrantedAuthority {
+public class Access implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 
@@ -62,7 +62,7 @@ public class access implements GrantedAuthority {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		access other = (access) obj;
+		Access other = (Access) obj;
 		return Objects.equals(description, other.description);
 	}
 

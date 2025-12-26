@@ -19,7 +19,7 @@ import jakarta.persistence.SequenceGenerator;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @SequenceGenerator(name = "seq_person", sequenceName = "seq_person", allocationSize = 1, initialValue = 1)
-public abstract class person implements Serializable{
+public abstract class Person implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,14 +31,14 @@ public abstract class person implements Serializable{
 	private String email;
 	private String phone;
 	
-	private List<address> address = new ArrayList<address>();
+	private List<Address> address = new ArrayList<Address>();
 	
-	public void setAddress(List<address> address) {
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
 	
 	@OneToMany(mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public List<address> getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 	
@@ -78,7 +78,7 @@ public abstract class person implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		person other = (person) obj;
+		Person other = (Person) obj;
 		return Objects.equals(id, other.id);
 	}
 	
