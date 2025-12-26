@@ -27,7 +27,7 @@ public class Address implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
 	private Long id;
-	
+
 	private String publicPlace;
 	private String cep;
 	private String number;
@@ -35,25 +35,18 @@ public class Address implements Serializable {
 	private String neighborhood;
 	private String uf;
 	private String city;
-	
+
 	@ManyToOne
-	@JoinColumn(
-	    name = "person_id",
-	    nullable = false,
-	    foreignKey = @ForeignKey(
-	        value = ConstraintMode.CONSTRAINT,
-	        name = "person_fk"
-	    )
-	)
+	@JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
 	private Person person;
-	
+
 	@Enumerated(EnumType.STRING)
 	private TypeAddress typeAddres;
-	
+
 	public TypeAddress getTypeAddres() {
 		return typeAddres;
 	}
-	
+
 	public void setTypeAddres(TypeAddress typeAddres) {
 		this.typeAddres = typeAddres;
 	}

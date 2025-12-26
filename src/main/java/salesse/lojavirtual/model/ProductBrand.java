@@ -21,7 +21,7 @@ public class ProductBrand implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nameDescription;
 
@@ -45,7 +45,6 @@ public class ProductBrand implements Serializable {
 	public int hashCode() {
 		return Objects.hash(id, nameDescription);
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {

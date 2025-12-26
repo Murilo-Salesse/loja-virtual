@@ -40,10 +40,8 @@ public class User implements UserDetails {
 	private Date dateCurrencyPassword;
 
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "users_access", uniqueConstraints = @UniqueConstraint(columnNames = { "user_id", "access_id" }, 
-	name = "unique_access_user"), joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", table = "users", 
-			unique = false, foreignKey = @ForeignKey(name = "user_fk", value = ConstraintMode.CONSTRAINT)), 
-			inverseJoinColumns = @JoinColumn(name = "access_id", unique = false, referencedColumnName = "id", table = "access", foreignKey = @ForeignKey(name = "access_fk", value = ConstraintMode.CONSTRAINT)))
+	@JoinTable(name = "users_access", uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
+			"access_id" }, name = "unique_access_user"), joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", table = "users", unique = false, foreignKey = @ForeignKey(name = "user_fk", value = ConstraintMode.CONSTRAINT)), inverseJoinColumns = @JoinColumn(name = "access_id", unique = false, referencedColumnName = "id", table = "access", foreignKey = @ForeignKey(name = "access_fk", value = ConstraintMode.CONSTRAINT)))
 	private List<Access> access;
 
 	/*

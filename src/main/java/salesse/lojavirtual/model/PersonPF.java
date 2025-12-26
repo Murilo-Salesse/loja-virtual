@@ -9,13 +9,13 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "person_fisic")
 @PrimaryKeyJoinColumn(name = "id")
-public class PersonPF extends Person{
+public class PersonPF extends Person {
 
 	private static final long serialVersionUID = 1L;
 
 	@Column(nullable = false)
 	private String cpf;
-	
+
 	private Date birthdayDate;
 
 	public String getCpf() {
@@ -33,5 +33,5 @@ public class PersonPF extends Person{
 	public void setBirthdayDate(Date birthdayDate) {
 		this.birthdayDate = birthdayDate;
 	}
-		
+
 }

@@ -14,14 +14,14 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "category_product")
 @SequenceGenerator(name = "seq_category_product", sequenceName = "seq_category_product", allocationSize = 1, initialValue = 1)
-public class CategoryProduct implements Serializable{
-	
+public class CategoryProduct implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category_product")
 	private Long id;
-	
+
 	@Column(name = "name_description", nullable = false)
 	private String nameDescription;
 
@@ -57,5 +57,5 @@ public class CategoryProduct implements Serializable{
 		CategoryProduct other = (CategoryProduct) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }

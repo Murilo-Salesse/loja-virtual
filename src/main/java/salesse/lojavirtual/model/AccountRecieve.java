@@ -52,7 +52,6 @@ public class AccountRecieve implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 
 	public BigDecimal getDescountValue() {
 		return descountValue;
@@ -133,7 +132,5 @@ public class AccountRecieve implements Serializable {
 				+ expireDate + ", paymentDate=" + paymentDate + ", totalValue=" + totalValue + ", descountValue="
 				+ descountValue + ", person=" + person + "]";
 	}
-
-
 
 }
