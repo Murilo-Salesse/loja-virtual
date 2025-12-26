@@ -17,33 +17,35 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import salesse.lojavirtual.enums.StatusAccountRecieve;
+import salesse.lojavirtual.enums.StatusAccountPay;
 
 @Entity
-@Table(name = "account_recieve")
-@SequenceGenerator(name = "seq_account_recieve", sequenceName = "seq_account_recieve", allocationSize = 1, initialValue = 1)
-public class AccountRecieve implements Serializable {
+@Table(name = "account_pay")
+@SequenceGenerator(name = "seq_account_pay", sequenceName = "seq_account_pay", allocationSize = 1, initialValue = 1)
+public class AccountPay implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_account_recieve")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_account_pay")
 	private Long id;
-
 	private String description;
+	private BigDecimal totalValue;
+	private BigDecimal descountValue;
 
 	@Enumerated(EnumType.STRING)
-	private StatusAccountRecieve status;
+	private StatusAccountPay status;
 
 	private Date expireDate;
 	private Date paymentDate;
 
-	private BigDecimal totalValue;
-	private BigDecimal descountValue;
-
 	@ManyToOne
 	@JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
 	private Person person;
+
+	@ManyToOne
+	@JoinColumn(name = "person_supplier_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_supplier_fk"))
+	private Person person_supplier;
 
 	public Long getId() {
 		return id;
@@ -51,15 +53,6 @@ public class AccountRecieve implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
-
-	public BigDecimal getDescountValue() {
-		return descountValue;
-	}
-
-	public void setDescountValue(BigDecimal descountValue) {
-		this.descountValue = descountValue;
 	}
 
 	public String getDescription() {
@@ -70,11 +63,27 @@ public class AccountRecieve implements Serializable {
 		this.description = description;
 	}
 
-	public StatusAccountRecieve getStatus() {
+	public BigDecimal getTotalValue() {
+		return totalValue;
+	}
+
+	public void setTotalValue(BigDecimal totalValue) {
+		this.totalValue = totalValue;
+	}
+
+	public BigDecimal getDescountValue() {
+		return descountValue;
+	}
+
+	public void setDescountValue(BigDecimal descountValue) {
+		this.descountValue = descountValue;
+	}
+
+	public StatusAccountPay getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusAccountRecieve status) {
+	public void setStatus(StatusAccountPay status) {
 		this.status = status;
 	}
 
@@ -94,20 +103,20 @@ public class AccountRecieve implements Serializable {
 		this.paymentDate = paymentDate;
 	}
 
-	public BigDecimal getTotalValue() {
-		return totalValue;
-	}
-
-	public void setTotalValue(BigDecimal totalValue) {
-		this.totalValue = totalValue;
-	}
-
 	public Person getPerson() {
 		return person;
 	}
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public Person getPerson_supplier() {
+		return person_supplier;
+	}
+
+	public void setPerson_supplier(Person person_supplier) {
+		this.person_supplier = person_supplier;
 	}
 
 	@Override
@@ -123,17 +132,15 @@ public class AccountRecieve implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AccountRecieve other = (AccountRecieve) obj;
+		AccountPay other = (AccountPay) obj;
 		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "AccountRecieve [id=" + id + ", description=" + description + ", status=" + status + ", expireDate="
-				+ expireDate + ", paymentDate=" + paymentDate + ", totalValue=" + totalValue + ", descountValue="
-				+ descountValue + ", person=" + person + "]";
+		return "AccountPay [id=" + id + ", description=" + description + ", totalValue=" + totalValue
+				+ ", descountValue=" + descountValue + ", status=" + status + ", expireDate=" + expireDate
+				+ ", paymentDate=" + paymentDate + ", person=" + person + ", person_supplier=" + person_supplier + "]";
 	}
-
-
 
 }
