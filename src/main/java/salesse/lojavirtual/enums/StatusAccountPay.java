@@ -2,7 +2,7 @@ package salesse.lojavirtual.enums;
 
 public enum StatusAccountPay {
 
-	CHARGE("Pagar"), EXPIRED("Vencida"), OPEN("Aberta"), FINISHED("Quitada"), NEGOTIATED("Renegociada");
+	CHARGE("Pagar"), EXPIRED("Vencida"), OPEN("Aberta"), FINISHED("Quitada"), NEGOTIATED("Renegociada"), RENT("Aluguel"), EMPLOYEE("Funcionario");
 
 	private String description;
 
