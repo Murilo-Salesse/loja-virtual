@@ -3,6 +3,7 @@ package salesse.lojavirtual.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -25,7 +26,10 @@ public class ProductAssessment implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product_assessment")
 	private Long id;
 
+	@Column(nullable = false)
 	private String description;
+	
+	@Column(nullable = false)
 	private Integer score;
 
 	@ManyToOne

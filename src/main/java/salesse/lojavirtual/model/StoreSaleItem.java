@@ -3,6 +3,7 @@ package salesse.lojavirtual.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -25,6 +26,7 @@ public class StoreSaleItem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_store_sale_item")
 	private Long id;
 
+	@Column(nullable = false)
 	private Double quantity;
 
 	@ManyToOne

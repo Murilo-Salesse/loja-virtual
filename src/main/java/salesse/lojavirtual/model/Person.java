@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -27,8 +28,13 @@ public abstract class Person implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
 	private Long id;
 
+	@Column(nullable = false)
 	private String name;
+	
+	@Column(nullable = false)
 	private String email;
+	
+	@Column(nullable = false)
 	private String phone;
 
 	private List<Address> address = new ArrayList<Address>();

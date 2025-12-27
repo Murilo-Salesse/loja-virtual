@@ -3,6 +3,7 @@ package salesse.lojavirtual.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -28,18 +29,30 @@ public class Address implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
 	private Long id;
 
+	@Column(nullable = false)
 	private String publicPlace;
+	
+	@Column(nullable = false)
 	private String cep;
+	
+	@Column(nullable = false)
 	private String number;
 	private String complement;
+	
+	@Column(nullable = false)
 	private String neighborhood;
+	
+	@Column(nullable = false)
 	private String uf;
+	
+	@Column(nullable = false)
 	private String city;
 
 	@ManyToOne
 	@JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
 	private Person person;
 
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TypeAddress typeAddres;
 

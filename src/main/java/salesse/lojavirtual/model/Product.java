@@ -22,21 +22,36 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
 	private Long id;
-
+	
+	@Column(nullable = false)
 	private String unitType;
+	
+	@Column(nullable = false)
 	private String name;
 	
-	@Column(columnDefinition = "text", length = 2000)
+	@Column(columnDefinition = "text", length = 2000, nullable = false)
 	private String description;
 	
 	/* Nota item produto - ASSOCIAR*/
 	
+	@Column(nullable = false)
 	private Double weight;
+	
+	@Column(nullable = false)
 	private Double width;
+	
+	@Column(nullable = false)
 	private Double height;
+	
+	@Column(nullable = false)
 	private Double depth;
+	
+	@Column(nullable = false)
 	private BigDecimal saleValue = BigDecimal.ZERO;
+	
+	@Column(nullable = false)
 	private Integer stockQuantity = 0;
+	
 	private Integer stockQuantityAlert = 0;
 	private String youtubeLink;
 	private Boolean stockAlert = Boolean.FALSE;

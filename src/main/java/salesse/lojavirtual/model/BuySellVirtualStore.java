@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -40,6 +41,7 @@ public class BuySellVirtualStore implements Serializable {
 	@JoinColumn(name = "charge_address_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "charge_address_id_fk"))
 	private Address chargeAddress;
 
+	@Column(nullable = false)
 	private BigDecimal totalValue;
 	private BigDecimal descountValue;
 
@@ -52,12 +54,19 @@ public class BuySellVirtualStore implements Serializable {
 	private InvoiceSale invoiceSale;
 
 	@ManyToOne
-	@JoinColumn(name = "discount_coupon_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "discount_coupon_id_fk"))
+	@JoinColumn(name = "discount_coupon_id", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "discount_coupon_id_fk"))
 	private DiscountCoupon discountCoupon;
 
+	@Column(nullable = false)
 	private BigDecimal freightValue;
+	
+	@Column(nullable = false)
 	private Integer deliveryDays;
+	
+	@Column(nullable = false)
 	private Date saleDate;
+	
+	@Column(nullable = false)
 	private Date deliveredDate;
 
 	public Long getId() {

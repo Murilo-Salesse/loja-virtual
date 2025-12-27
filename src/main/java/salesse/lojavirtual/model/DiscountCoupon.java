@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,11 +23,14 @@ public class DiscountCoupon implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_discount_coupon")
 	private Long id;
-
+	
+	@Column(nullable = false)
 	private String DescriptionCode;
 	
 	private BigDecimal realValueDescription;
 	private BigDecimal percentValueDescription;
+	
+	@Column(nullable = false)
 	private Date validateDateCupon;
 	
 	public Long getId() {

@@ -8,6 +8,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,6 +18,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -33,16 +35,25 @@ public class User implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_users")
 	private Long id;
 
+	@Column(nullable = false)
 	private String login;
 
+	@Column(nullable = false)
 	private String password;
 
+	@Column(nullable = false)
 	private Date dateCurrencyPassword;
+	
+	@ManyToOne
+	@JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
+	private Person person;
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "users_access", uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
 			"access_id" }, name = "unique_access_user"), joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", table = "users", unique = false, foreignKey = @ForeignKey(name = "user_fk", value = ConstraintMode.CONSTRAINT)), inverseJoinColumns = @JoinColumn(name = "access_id", unique = false, referencedColumnName = "id", table = "access", foreignKey = @ForeignKey(name = "access_fk", value = ConstraintMode.CONSTRAINT)))
 	private List<Access> access;
+	
+	
 
 	/*
 	 * Autoridades = São os acessos, ou seja ROLE_ADMIN, ROLE_SECRETARIO,
@@ -65,5 +76,23 @@ public class User implements UserDetails {
 
 		return this.login;
 	}
+
+	public Date getDateCurrencyPassword() {
+		return dateCurrencyPassword;
+	}
+
+	public void setDateCurrencyPassword(Date dateCurrencyPassword) {
+		this.dateCurrencyPassword = dateCurrencyPassword;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	
+	
 
 }

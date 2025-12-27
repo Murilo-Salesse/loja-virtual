@@ -26,14 +26,19 @@ public class InvoiceSale implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_invoice_sale")
 	private Long id;
 
+	@Column(nullable = false)
 	private String number;
+	
+	@Column(nullable = false)
 	private String serie;
+	
+	@Column(nullable = false)
 	private String type;
 
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "text", nullable = false)
 	private String xml;
 
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "text", nullable = false)
 	private String pdf;
 
 	@OneToOne
