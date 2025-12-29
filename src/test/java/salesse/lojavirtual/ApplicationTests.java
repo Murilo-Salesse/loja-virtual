@@ -4,11 +4,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import junit.framework.TestCase;
 import salesse.lojavirtual.controller.AccessController;
 import salesse.lojavirtual.model.Access;
 
 @SpringBootTest
-class ApplicationTests {
+public class ApplicationTests extends TestCase{
 
 	@Autowired
 	private AccessController accessController;
@@ -18,7 +19,11 @@ class ApplicationTests {
 		Access access = new Access();
 
 		access.setDescription("ROLE_ADMIN");
-		accessController.saveAccess(access);
+		
+		access = accessController.saveAccess(access).getBody();
+		
+		assertEquals(true, access.getId() > 0);
+		assertEquals("ROLE_ADMIN", access.getDescription());
 	}
 
 }

@@ -1,6 +1,5 @@
 package salesse.lojavirtual.service;
 
-
 import org.springframework.stereotype.Service;
 
 import salesse.lojavirtual.model.Access;
@@ -18,7 +17,12 @@ public class AccessService {
 
 	public Access save(Access access) {
 
-		/* Qualquer tipo de validação antes de salvar */
 		return accessRepository.save(access);
+	}
+
+	public Void delete(Long idAccess) {
+
+		accessRepository.deleteById(idAccess);
+		return null;
 	}
 }
