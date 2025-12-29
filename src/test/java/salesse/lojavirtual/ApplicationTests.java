@@ -11,7 +11,7 @@ import salesse.lojavirtual.model.Access;
 class ApplicationTests {
 
 	@Autowired
-	private final AccessController accessController = null;
+	private AccessController accessController;
 
 	@Test
 	public void testRegisterAccess() {
