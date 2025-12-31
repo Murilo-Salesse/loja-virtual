@@ -12,11 +12,9 @@ public class WebConfigSecurity {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(auth -> auth.requestMatchers("/api/access/**", "/public/**").permitAll() // Libera
-																											// essas
-																											// rotas
-				.anyRequest().authenticated() // Demais rotas precisam autenticação
-		).csrf(csrf -> csrf.disable()); // Desabilita CSRF se necessário (APIs REST)
+		http.authorizeHttpRequests(
+				auth -> auth.requestMatchers("/api/access/**", "/public/**").permitAll().anyRequest().authenticated())
+				.csrf(csrf -> csrf.disable());
 
 		return http.build();
 	}
