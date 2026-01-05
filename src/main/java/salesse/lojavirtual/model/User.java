@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -43,7 +42,7 @@ public class User implements UserDetails {
 
 	@Column(nullable = false)
 	private Date dateCurrencyPassword;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
 	private Person person;
@@ -52,8 +51,6 @@ public class User implements UserDetails {
 	@JoinTable(name = "users_access", uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
 			"access_id" }, name = "unique_access_user"), joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", table = "users", unique = false, foreignKey = @ForeignKey(name = "user_fk", value = ConstraintMode.CONSTRAINT)), inverseJoinColumns = @JoinColumn(name = "access_id", unique = false, referencedColumnName = "id", table = "access", foreignKey = @ForeignKey(name = "access_fk", value = ConstraintMode.CONSTRAINT)))
 	private List<Access> access;
-	
-	
 
 	/*
 	 * Autoridades = São os acessos, ou seja ROLE_ADMIN, ROLE_SECRETARIO,
@@ -66,7 +63,7 @@ public class User implements UserDetails {
 	}
 
 	@Override
-	public @Nullable String getPassword() {
+	public String getPassword() {
 
 		return this.password;
 	}
@@ -92,7 +89,5 @@ public class User implements UserDetails {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-	
-	
 
 }

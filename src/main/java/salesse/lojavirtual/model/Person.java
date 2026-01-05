@@ -30,12 +30,15 @@ public abstract class Person implements Serializable {
 
 	@Column(nullable = false)
 	private String name;
-	
+
 	@Column(nullable = false)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String phone;
+
+	@Column
+	private String typePerson;
 
 	private List<Address> address = new ArrayList<Address>();
 
@@ -62,6 +65,14 @@ public abstract class Person implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getTypePerson() {
+		return typePerson;
+	}
+
+	public void setTypePerson(String typePerson) {
+		this.typePerson = typePerson;
 	}
 
 	public String getEmail() {

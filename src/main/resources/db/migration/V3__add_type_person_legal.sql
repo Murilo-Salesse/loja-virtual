@@ -1,0 +1,2 @@
+ALTER TABLE person_legal
+ADD COLUMN IF NOT EXISTS type_person VARCHAR(255);

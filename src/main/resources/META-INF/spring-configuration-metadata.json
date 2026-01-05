@@ -1,0 +1,24 @@
+{
+	"properties": [
+		{
+			"name": "spring.flyway.enabled",
+			"type": "java.lang.Boolean",
+			"description": "Enable or disable Flyway migrations",
+			"defaultValue": true
+		},
+		{
+			"name": "spring.flyway.locations",
+			"type": "java.lang.String[]",
+			"description": "Locations of migration scripts",
+			"defaultValue": [
+				"classpath:db/migration"
+			]
+		},
+		{
+			"name": "spring.flyway.baseline-on-migrate",
+			"type": "java.lang.Boolean",
+			"description": "Whether to automatically call baseline when migrate is executed against a non-empty schema",
+			"defaultValue": false
+		}
+	]
+}

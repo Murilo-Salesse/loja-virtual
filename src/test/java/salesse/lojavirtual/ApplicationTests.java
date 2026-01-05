@@ -1,5 +1,9 @@
 package salesse.lojavirtual;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,17 +19,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import junit.framework.TestCase;
 import salesse.lojavirtual.controller.AccessController;
 import salesse.lojavirtual.model.Access;
 import salesse.lojavirtual.repository.AccessRepository;
 
 import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import tools.jackson.databind.ObjectMapper;
-
+//@Profile("test")
 @SpringBootTest
-public class ApplicationTests extends TestCase {
+public class ApplicationTests {
 
 	@Autowired
 	private AccessRepository accessRepository;

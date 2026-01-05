@@ -2,7 +2,6 @@ package salesse.lojavirtual.model;
 
 import java.util.Objects;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 
 import jakarta.persistence.Column;
@@ -28,7 +27,7 @@ public class Access implements GrantedAuthority {
 	private String description; // Acesso ex: ROLE_ADMIN ou ROLE_SECRETARIO
 
 	@Override
-	public @Nullable String getAuthority() {
+	public String getAuthority() {
 		// TODO Auto-generated method stub
 		return this.description;
 	}

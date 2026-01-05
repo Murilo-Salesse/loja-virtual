@@ -1,0 +1,4 @@
+ALTER TABLE person_fisic
+ADD COLUMN IF NOT EXISTS type_person VARCHAR(255);
+
+
