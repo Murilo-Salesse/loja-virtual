@@ -21,16 +21,15 @@ public class AccessService {
 
 		return accessRepository.save(access);
 	}
-	
+
 	public Access getById(Long id) {
-		
-		return accessRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("ID não encontrado"));
+
+		return accessRepository.findById(id).orElseThrow(() -> new RuntimeException("ID não encontrado"));
 	}
-	
+
 	public List<Access> getByDesc(String desc) {
-		
-	    return accessRepository.findAccessDesc("%" + desc.toUpperCase() + "%");
+
+		return accessRepository.findAccessDesc("%" + desc.toUpperCase() + "%");
 	}
 
 	public Void delete(Long idAccess) {

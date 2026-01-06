@@ -11,9 +11,8 @@ import salesse.lojavirtual.model.Access;
 
 @Repository
 @Transactional
-public interface AccessRepository extends JpaRepository<Access, Long>{
+public interface AccessRepository extends JpaRepository<Access, Long> {
 
-	
 	@Query("select a from Access a where upper(trim(a.description)) like ?1")
 	List<Access> findAccessDesc(String description);
 }
