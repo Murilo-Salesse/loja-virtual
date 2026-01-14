@@ -47,7 +47,7 @@ public class User implements UserDetails {
 	@JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
 	private Person person;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_access", uniqueConstraints = @UniqueConstraint(columnNames = { "user_id",
 			"access_id" }, name = "unique_access_user"), joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", table = "users", unique = false, foreignKey = @ForeignKey(name = "user_fk", value = ConstraintMode.CONSTRAINT)), inverseJoinColumns = @JoinColumn(name = "access_id", unique = false, referencedColumnName = "id", table = "access", foreignKey = @ForeignKey(name = "access_fk", value = ConstraintMode.CONSTRAINT)))
 	private List<Access> access;

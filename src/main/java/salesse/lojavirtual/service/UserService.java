@@ -24,11 +24,10 @@ public class UserService implements UserDetailsService {
 		User user = userRepository.findUserByLogin(username);
 
 		if (user == null) {
-			throw new UsernameNotFoundException("Usuário não foi encontrado!");
+			throw new UsernameNotFoundException("Usuário não encontrado: " + username);
 		}
 
-		return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),
-				user.getAuthorities());
+		return user;
 	}
 
 }

@@ -8,7 +8,7 @@ import salesse.lojavirtual.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
-
-	@Query(value = "select u from users u where u.login = ?1")
+	
+	@Query(value = "select u from User u where u.login = ?1")
 	User findUserByLogin(String login);
 }
